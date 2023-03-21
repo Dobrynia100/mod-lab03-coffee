@@ -1,39 +1,39 @@
-#include "\учеба\мипс\3\include\Automata.h"
+#include "Automata.h"
 
 
 Automata::Automata()
 {
     state = OFF;
-    menu = { "Чай", "Кофе", "Какао", "Молоко", "Чай с лимоном" };
+    menu = { "Г—Г Г©", "ГЉГ®ГґГҐ", "ГЉГ ГЄГ Г®", "ГЊГ®Г«Г®ГЄГ®", "Г—Г Г© Г± Г«ГЁГ¬Г®Г­Г®Г¬" };
     prices = { 50, 70, 60, 30, 55 };
     cash = 0;
 }
 void Automata::on() {
     state = WAIT;
-    cout << "Автомат включен" << endl;
+    cout << "ГЂГўГІГ®Г¬Г ГІ ГўГЄГ«ГѕГ·ГҐГ­" << endl;
 }
 
 void Automata::off() {
     state = OFF;
-    cout << "Автомат выключен" << endl;
+    cout << "ГЂГўГІГ®Г¬Г ГІ ГўГ»ГЄГ«ГѕГ·ГҐГ­" << endl;
 }
 void Automata::coin(int amount) {
     if (state == ACCEPT || state == CHECK) {
         cash += amount;
         state = CHECK;
-        cout << "Внесено " << amount << " рублей. Всего: " << cash << " рублей." << endl;
+        cout << "Г‚Г­ГҐГ±ГҐГ­Г® " << amount << " Г°ГіГЎГ«ГҐГ©. Г‚Г±ГҐГЈГ®: " << cash << " Г°ГіГЎГ«ГҐГ©." << endl;
     }
     else {
         state = CHECK;
-        cout << "Невозможно принять деньги в текущем состоянии" << endl;
+        cout << "ГЌГҐГўГ®Г§Г¬Г®Г¦Г­Г® ГЇГ°ГЁГ­ГїГІГј Г¤ГҐГ­ГјГЈГЁ Гў ГІГҐГЄГіГ№ГҐГ¬ Г±Г®Г±ГІГ®ГїГ­ГЁГЁ" << endl;
     }
 }
 
 void Automata::getMenu() {
     if (state == WAIT) {
-        cout << "Меню напитков:" << endl;
+        cout << "ГЊГҐГ­Гѕ Г­Г ГЇГЁГІГЄГ®Гў:" << endl;
         for (int i = 0; i < 5; i++) {
-            cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " рублей" << endl;
+            cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " Г°ГіГЎГ«ГҐГ©" << endl;
         }
         state = ACCEPT;
 
@@ -47,10 +47,10 @@ void Automata::choice(int item)
         if (item >= 1 && item <= menu.size()) {
             _choice = item - 1;
             _price = prices[_choice];           
-            cout << "Выбрано: " << menu[_choice] << "\n";
+            cout << "Г‚Г»ГЎГ°Г Г­Г®: " << menu[_choice] << "\n";
         }
         else {
-            cout << "Неверный выбор\n";
+            cout << "ГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°\n";
         }
     }
 }
@@ -60,11 +60,11 @@ void Automata::cancel()
     {
         state = WAIT;
         cash = 0;
-        cout << "Отмена\n";
+        cout << "ГЋГІГ¬ГҐГ­Г \n";
     }
     else
     {
-        cout << "Невозможно отменить текущий этап\n";
+        cout << "ГЌГҐГўГ®Г§Г¬Г®Г¦Г­Г® Г®ГІГ¬ГҐГ­ГЁГІГј ГІГҐГЄГіГ№ГЁГ© ГЅГІГ ГЇ\n";
     }
 }
 void Automata::check()
@@ -75,13 +75,13 @@ void Automata::check()
         state = COOK;
         if (cash > _price)
         {
-            cout << "Ваша сдача: " << cash - _price << endl;
+            cout << "Г‚Г ГёГ  Г±Г¤Г Г·Г : " << cash - _price << endl;
             cash = _price;
         }
     }
     else {
        
-        cout << "Недостаточно средств\n";
+        cout << "ГЌГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г±Г°ГҐГ¤Г±ГІГў\n";
     }
 
 
@@ -91,11 +91,11 @@ void Automata::finish()
     if (state == COOK)
     {
         state = WAIT;
-        cout << "Ваше " << menu[_choice] << " готово\n";
+        cout << "Г‚Г ГёГҐ " << menu[_choice] << " ГЈГ®ГІГ®ГўГ®\n";
     }
     else
     {
-        cout << "Неверный выбор\n";
+        cout << "ГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°\n";
     }
 }
 void Automata::cook()
@@ -108,11 +108,11 @@ void Automata::cook()
     }
     else
     {
-        cout << "Неверный выбор\n";
+        cout << "ГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°\n";
     }
 }
 Automata::STATES Automata::getState()
 {
-    cout << "Текущий этап: " << state << endl;
+    cout << "Г’ГҐГЄГіГ№ГЁГ© ГЅГІГ ГЇ: " << state << endl;
     return this->state;
 }
