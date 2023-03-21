@@ -4,7 +4,7 @@
 #include "Automata.h"
 
 TEST(task1, test1) {
- Automata coffee = Automata();
+Automata coffee = Automata();
 coffee.on();
 enum STATES { WAIT };
 EXPECT_EQ(WAIT, coffee.getState());
