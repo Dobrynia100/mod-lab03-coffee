@@ -11,7 +11,6 @@ void Automata::on() {
     state = WAIT;
     cout << "Автомат включен" << endl;
 }
-
 void Automata::off() {
     state = OFF;
     cout << "Автомат выключен" << endl;
@@ -20,14 +19,13 @@ void Automata::coin(int amount) {
     if (state == ACCEPT || state == CHECK) {
         cash += amount;
         state = CHECK;
-        cout << "Внесено " << amount << " рублей. Всего: " 
+        cout << "Внесено " << amount << " рублей. Всего: "
             << cash << " рублей." << endl;
     } else {
         state = CHECK;
         cout << "Невозможно принять деньги в текущем состоянии" << endl;
     }
 }
-
 void Automata::getMenu() {
     if (state == WAIT) {
         cout << "Меню напитков:" << endl;
@@ -35,15 +33,13 @@ void Automata::getMenu() {
             cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " рублей" << endl;
         }
         state = ACCEPT;
-
     }
-   
 }
 void Automata::choice(int item) {
     if (state == ACCEPT) {
         if (item >= 1 && item <= menu.size()) {
             _choice = item - 1;
-            _price = prices[_choice];           
+            _price = prices[_choice];
             cout << "Выбрано: " << menu[_choice] << "\n";
         } else {
             cout << "Неверный выбор\n";
@@ -60,18 +56,15 @@ void Automata::cancel() {
     }
 }
 void Automata::check() {
-    
     if (state == CHECK && cash >= _price) {
         state = COOK;
         if (cash > _price) {
             cout << "Ваша сдача: " << cash - _price << endl;
             cash = _price;
         }
-    } else {     
+    } else {
         cout << "Недостаточно средств\n";
     }
-
-
 }
 void Automata::finish() {
     if (state == COOK) {
