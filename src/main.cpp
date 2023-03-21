@@ -7,8 +7,11 @@ int main()
     coffee.on();
     coffee.getMenu();
     coffee.choice(1);
-    coffee.coin(100);
-    coffee.check();
+    while (coffee.getState() != Automata::COOK)
+    {    
+        coffee.coin(50);
+        coffee.check();
+    }
     coffee.cook();
     coffee.finish();
     int exit = 0;

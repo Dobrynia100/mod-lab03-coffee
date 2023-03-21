@@ -6,6 +6,13 @@ using namespace std;
 
 class Automata {
 private:
+    
+    int cash;
+    vector<string> menu;
+    vector<int> prices;
+    
+
+public:
     enum STATES {
         OFF,
         WAIT,
@@ -14,12 +21,7 @@ private:
         COOK
 
     };
-    int cash;
-    vector<string> menu;
-    vector<int> prices;
     STATES state;
-
-public:
     Automata();
     int _choice;
     int _price;

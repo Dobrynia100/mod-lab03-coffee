@@ -24,6 +24,7 @@ void Automata::coin(int amount) {
         cout << "Внесено " << amount << " рублей. Всего: " << cash << " рублей." << endl;
     }
     else {
+        state = CHECK;
         cout << "Невозможно принять деньги в текущем состоянии" << endl;
     }
 }
@@ -37,6 +38,7 @@ void Automata::getMenu() {
         state = ACCEPT;
 
     }
+   
 }
 void Automata::choice(int item)
 {
@@ -44,8 +46,7 @@ void Automata::choice(int item)
     {
         if (item >= 1 && item <= menu.size()) {
             _choice = item - 1;
-            _price = prices[_choice];
-            state = CHECK;
+            _price = prices[_choice];           
             cout << "Выбрано: " << menu[_choice] << "\n";
         }
         else {
@@ -61,11 +62,15 @@ void Automata::cancel()
         cash = 0;
         cout << "Отмена\n";
     }
+    else
+    {
+        cout << "Невозможно отменить текущий этап\n";
+    }
 }
 void Automata::check()
 {
     
-    if (cash >= _price)
+    if (state == CHECK && cash >= _price)
     {
         state = COOK;
         if (cash > _price)
@@ -75,7 +80,7 @@ void Automata::check()
         }
     }
     else {
-        
+       
         cout << "Недостаточно средств\n";
     }
 
