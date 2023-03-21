@@ -1,4 +1,4 @@
-#include "\учеба\мипс\3\include\Automata.h"
+#include "Automata.h"
 
 int main()
 {
