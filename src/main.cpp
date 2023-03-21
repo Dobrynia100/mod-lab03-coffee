@@ -13,7 +13,7 @@ int main() {
     coffee.cook();
     coffee.finish();
     int exit = 0;
-    cin >> exit;
+    std::cin >> exit;
     return 0;
 }
 
