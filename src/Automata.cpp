@@ -1,118 +1,96 @@
+// Copyright 2023 UNN-IASR
 #include "Automata.h"
 
-
-Automata::Automata()
-{
+Automata::Automata() {
     state = OFF;
-    menu = { "×àé", "Êîôå", "Êàêàî", "Ìîëîêî", "×àé ñ ëèìîíîì" };
+    menu = { "Чай", "Кофе", "Какао", "Молоко", "Чай с лимоном" };
     prices = { 50, 70, 60, 30, 55 };
     cash = 0;
 }
 void Automata::on() {
     state = WAIT;
-    cout << "Àâòîìàò âêëþ÷åí" << endl;
+    cout << "Автомат включен" << endl;
 }
 
 void Automata::off() {
     state = OFF;
-    cout << "Àâòîìàò âûêëþ÷åí" << endl;
+    cout << "Автомат выключен" << endl;
 }
 void Automata::coin(int amount) {
     if (state == ACCEPT || state == CHECK) {
         cash += amount;
         state = CHECK;
-        cout << "Âíåñåíî " << amount << " ðóáëåé. Âñåãî: " << cash << " ðóáëåé." << endl;
-    }
-    else {
+        cout << "Внесено " << amount << " рублей. Всего: " 
+            << cash << " рублей." << endl;
+    } else {
         state = CHECK;
-        cout << "Íåâîçìîæíî ïðèíÿòü äåíüãè â òåêóùåì ñîñòîÿíèè" << endl;
+        cout << "Невозможно принять деньги в текущем состоянии" << endl;
     }
 }
 
 void Automata::getMenu() {
     if (state == WAIT) {
-        cout << "Ìåíþ íàïèòêîâ:" << endl;
+        cout << "Меню напитков:" << endl;
         for (int i = 0; i < 5; i++) {
-            cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " ðóáëåé" << endl;
+            cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " рублей" << endl;
         }
         state = ACCEPT;
 
     }
    
 }
-void Automata::choice(int item)
-{
-    if (state == ACCEPT)
-    {
+void Automata::choice(int item) {
+    if (state == ACCEPT) {
         if (item >= 1 && item <= menu.size()) {
             _choice = item - 1;
             _price = prices[_choice];           
-            cout << "Âûáðàíî: " << menu[_choice] << "\n";
-        }
-        else {
-            cout << "Íåâåðíûé âûáîð\n";
+            cout << "Выбрано: " << menu[_choice] << "\n";
+        } else {
+            cout << "Неверный выбор\n";
         }
     }
 }
-void Automata::cancel()
-{
-    if (state == ACCEPT || state == CHECK)
-    {
+void Automata::cancel() {
+    if (state == ACCEPT || state == CHECK) {
         state = WAIT;
         cash = 0;
-        cout << "Îòìåíà\n";
-    }
-    else
-    {
-        cout << "Íåâîçìîæíî îòìåíèòü òåêóùèé ýòàï\n";
+        cout << "Отмена\n";
+    } else {
+        cout << "Невозможно отменить текущий этап\n";
     }
 }
-void Automata::check()
-{
+void Automata::check() {
     
-    if (state == CHECK && cash >= _price)
-    {
+    if (state == CHECK && cash >= _price) {
         state = COOK;
-        if (cash > _price)
-        {
-            cout << "Âàøà ñäà÷à: " << cash - _price << endl;
+        if (cash > _price) {
+            cout << "Ваша сдача: " << cash - _price << endl;
             cash = _price;
         }
-    }
-    else {
-       
-        cout << "Íåäîñòàòî÷íî ñðåäñòâ\n";
+    } else {     
+        cout << "Недостаточно средств\n";
     }
 
 
 }
-void Automata::finish()
-{
-    if (state == COOK)
-    {
+void Automata::finish() {
+    if (state == COOK) {
         state = WAIT;
-        cout << "Âàøå " << menu[_choice] << " ãîòîâî\n";
-    }
-    else
-    {
-        cout << "Íåâåðíûé âûáîð\n";
+        cout << "Ваш(е) " << menu[_choice] << " готов(о)\n";
+    } else {
+        cout << "Неверный выбор\n";
     }
 }
-void Automata::cook()
-{
-    if (state == COOK)
-    {
+void Automata::cook() {
+    if (state == COOK) {
         cash -= _price;
         _choice = 0;
         _price = 0;
-    }
-    else
-    {
-        cout << "Íåâåðíûé âûáîð\n";
+    } else {
+        cout << "Неверный выбор\n";
     }
 }
-Automata::STATES Automata::getState()
-{
-    cout << "Òåêóùèé ýòàï: " << state << endl;
+Automata::STATES Automata::getState() {
+    cout << "Текущий этап: " << state << endl;
     return this->state;
 }
