@@ -1,25 +1,28 @@
+// Copyright 2023 UNN-IASR
+#ifndef INCLUDE_AUTOMATA_H_
+#define INCLUDE_AUTOMATA_H_
+
 #include <string>
 #include <vector>
 #include <iostream>
 
-using namespace std;
+using std::vector;
+using std::string;
+using std::cout;
+using std::endl;
 
 class Automata {
-private:
-    
+private:    
     int cash;
     vector<string> menu;
-    vector<int> prices;
-    
-
-public:
+    vector<int> prices;  
+public: 
     enum STATES {
         OFF,
         WAIT,
         ACCEPT,
         CHECK,
         COOK
-
     };
     STATES state;
     Automata();
