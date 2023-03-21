@@ -12,10 +12,10 @@ using std::cout;
 using std::endl;
 
 class Automata {
-private:    
+private: 
     int cash;
     vector<string> menu;
-    vector<int> prices;  
+    vector<int> prices;
 public: 
     enum STATES {
         OFF,
@@ -29,7 +29,6 @@ public:
     int _choice;
     int _price;
     void on();
-
     void off();
     void coin(int);
     void getMenu();
