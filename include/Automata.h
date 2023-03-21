@@ -12,11 +12,12 @@ using std::cout;
 using std::endl;
 
 class Automata {
-private: 
+ private:
     int cash;
     vector<string> menu;
     vector<int> prices;
-public: 
+    
+ public:
     enum STATES {
         OFF,
         WAIT,
