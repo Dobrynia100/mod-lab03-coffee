@@ -16,7 +16,7 @@ class Automata {
     int cash;
     vector<string> menu;
     vector<int> prices;
-    
+
  public:
     enum STATES {
         OFF,
