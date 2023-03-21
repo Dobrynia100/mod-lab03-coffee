@@ -30,7 +30,8 @@ void Automata::getMenu() {
     if (state == WAIT) {
         cout << "Меню напитков:" << endl;
         for (int i = 0; i < 5; i++) {
-            cout << i + 1 << ". " << menu[i] << " - " << prices[i] << " рублей" << endl;
+            cout << i + 1 << ". " << menu[i] << " - " 
+                << prices[i] << " рублей" << endl;
         }
         state = ACCEPT;
     }
