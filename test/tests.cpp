@@ -21,7 +21,7 @@ Automata coffee = Automata();
 coffee.on();
 coffee.getMenu();
 coffee.choice(1);
-EXPECT_EQ(Automata::CHECK, coffee.getState());
+EXPECT_EQ(Automata::ACCEPT, coffee.getState());
 }
 
 TEST(task1, test4) {
