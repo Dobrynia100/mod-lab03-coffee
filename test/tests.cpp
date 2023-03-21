@@ -28,13 +28,13 @@ TEST(task1, test3) {
 }
 
 TEST(task1, test4) {
-Automata coffee = Automata();
-coffee.on();
-coffee.getMenu();
-coffee.choice(1);
-coffee.coin(100);
-enum STATES { CHECK };
-EXPECT_EQ(CHECK, coffee.getState());
+	Automata coffee = Automata();
+	coffee.on();
+	coffee.getMenu();
+	coffee.choice(1);
+	coffee.coin(100);
+	enum STATES { CHECK };
+	EXPECT_EQ(CHECK, coffee.getState());
 }
 TEST(task1, test5) {
 	Automata coffee = Automata();
