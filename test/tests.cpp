@@ -1,7 +1,7 @@
 // Copyright 2022 GHA Test Team
 
 #include <gtest/gtest.h>
-#include "\учеба\мипс\3\include\Automata.h"
+#include "Automata.h"
 
 TEST(task1, test1) {
 	Automata coffee = Automata();
